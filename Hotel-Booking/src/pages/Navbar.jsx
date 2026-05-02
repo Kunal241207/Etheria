@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 const navItems = ["Home", "Services", "Pricing", "About"];
 
 export default function Navbar() {
@@ -22,27 +21,33 @@ export default function Navbar() {
           : "bg-white/10 backdrop-blur-md"
       }`}
     >
-      <h1 className="text-lg font-semibold tracking-wide text-zinc-900">
-        ETHERIA
+      <h1 className="group relative flex items-center gap-3">
+        
+        <span className="relative font-['Cinzel'] text-xl md:text-2xl font-extrabold tracking-[0.22em] leading-none">
+          <span className="bg-gradient-to-r from-white via-amber-100 to-white bg-clip-text text-transparent drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]">
+            ETHERIA
+          </span>
+          <span className="absolute -bottom-2 left-0 h-[2px] w-12 rounded-full bg-gradient-to-r from-amber-200 via-white/80 to-transparent transition-all duration-300 group-hover:w-20" />
+        </span>
       </h1>
 
-      <div className="hidden md:flex items-center bg-white/10 border border-white/10 rounded-full px-1 py-1 gap-2 backdrop-blur-md">
+      <div className="hidden md:flex items-center bg-white/10 border border-white/15 rounded-full px-1 py-1 gap-1 backdrop-blur-md">
         {navItems.map((item) => (
           <a
             key={item}
             href="#"
-            className="group relative px-4 py-1.5 text-sm text-zinc-700 rounded-full transition-all duration-300 hover:text-zinc-900 hover:-translate-y-[1px]"
+            className="group relative px-4 py-1.5 text-sm font-medium text-white/80 rounded-full transition-all duration-300 hover:text-white hover:-translate-y-[1px]"
           >
             <span>{item}</span>
 
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-1 h-[2px] w-0 bg-zinc-900 transition-all duration-300 group-hover:w-3/4" />
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-1 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-3/4" />
 
-            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 bg-white/20 -z-10" />
+            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 bg-white/15 -z-10" />
           </a>
         ))}
       </div>
 
-      <button className="hidden md:flex relative overflow-hidden items-center gap-2.5 px-5 py-2 rounded-full text-sm font-medium text-zinc-900 bg-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 group">
+      <button className="hidden md:flex relative overflow-hidden items-center gap-2.5 px-5 py-2 rounded-full text-sm font-semibold text-zinc-950 bg-white/85 backdrop-blur-md border border-white/30 transition-all duration-300 group">
         
         <span className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 transition duration-300" />
 
@@ -66,17 +71,17 @@ export default function Navbar() {
         className="md:hidden flex flex-col gap-1.5 p-1"
       >
         <span
-          className={`block w-6 h-0.5 bg-zinc-800 transition-transform ${
+          className={`block w-6 h-0.5 bg-white transition-transform ${
             isOpen ? "rotate-45 translate-y-2" : ""
           }`}
         />
         <span
-          className={`block w-6 h-0.5 bg-zinc-800 transition-opacity ${
+          className={`block w-6 h-0.5 bg-white transition-opacity ${
             isOpen ? "opacity-0" : ""
           }`}
         />
         <span
-          className={`block w-6 h-0.5 bg-zinc-800 transition-transform ${
+          className={`block w-6 h-0.5 bg-white transition-transform ${
             isOpen ? "-rotate-45 -translate-y-2" : ""
           }`}
         />
@@ -88,13 +93,13 @@ export default function Navbar() {
             <a
               key={item}
               href="#"
-              className="px-4 py-2.5 rounded-lg text-sm text-zinc-700 hover:bg-white/20 transition"
+              className="px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:bg-white/20 transition"
             >
               {item}
             </a>
           ))}
 
-          <button className="flex items-center justify-center gap-2.5 bg-white/20 backdrop-blur-md border border-white/20 text-zinc-900 text-sm font-medium px-5 py-2.5 rounded-full mt-3 w-fit">
+          <button className="flex items-center justify-center gap-2.5 bg-white/85 backdrop-blur-md border border-white/20 text-zinc-950 text-sm font-semibold px-5 py-2.5 rounded-full mt-3 w-fit">
             Get started
           </button>
         </div>
