@@ -1,12 +1,10 @@
 import Home from "./pages/Home"
-import About from "./pages/About"
-import Footer from "./pages/Footer"
+import Footer from "./components/Footer"
 
 function App() {
   return (
     <>
       <Home/>
-      <About/>
       <Footer/>
     </>
   )
