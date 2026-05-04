@@ -1,10 +1,19 @@
-import cover from "../assets/homepagecover.jpeg";
+import bgvideo from "../assets/bgvideo.mp4"
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden">
 
-      <img src={cover} className="absolute inset-0 w-full h-full object-cover scale-105" />
+      <video
+        className="absolute inset-0 w-full h-full object-cover scale-105"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      >
+        <source src={bgvideo} type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-black/35" />
       <div className="absolute top-0 w-full h-44 bg-gradient-to-b from-black/60 to-transparent" />
