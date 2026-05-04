@@ -1,4 +1,6 @@
-import bgvideo from "../assets/bgvideo.mp4"
+const bgvideo =
+  import.meta.env.VITE_HERO_VIDEO_URL ||
+  "https://res.cloudinary.com/dpg2clnkp/video/upload/v1777876033/bgvideo_compressed_1_xlpmav.mp4";
 
 export default function Hero() {
   return (
