@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FiArrowLeft, FiCheckCircle, FiEye, FiEyeOff, FiLock, FiMail, FiUser, FiX } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
+
 
 const premiumHotelImage =
   "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=85";
@@ -83,8 +85,19 @@ export default function Auth({ onClose }) {
     setResetSent(true);
   };
 
+  const handleGoogleLogin = () => {
+    setAuthSuccess("Connecting to Google...");
+    setTimeout(() => {
+      setAuthSuccess("Logged in with Google successfully.");
+      setTimeout(() => {
+        onClose();
+      }, 1200);
+    }, 1500);
+  };
+
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center px-4 py-6 text-zinc-900 sm:px-6">
+
       <button
         type="button"
         aria-label="Close login"
@@ -213,28 +226,29 @@ export default function Auth({ onClose }) {
               </form>
             ) : (
               <form className="mt-5 space-y-3">
-                {!isLogin && (
-                <label className="block">
-                  <span className="mb-2 block text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                    Full name
-                  </span>
-                  <span className="flex items-center gap-3 rounded-xl border border-black/10 bg-white/70 px-4 py-3 transition focus-within:border-amber-700">
-                    <FiUser className="text-zinc-400" />
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      value={authFields.name}
-                      onChange={(event) => updateAuthField("name", event.target.value)}
-                      className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-400"
-                    />
-                  </span>
-                  {authErrors.name && (
-                    <span className="mt-2 block text-xs font-medium text-red-600">
-                      {authErrors.name}
+                <div className={`transition-all duration-300 ease-in-out overflow-hidden ${!isLogin ? "max-h-[100px] opacity-100 mb-3" : "max-h-0 opacity-0 mb-0"}`}>
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                      Full name
                     </span>
-                  )}
-                </label>
-              )}
+                    <span className="flex items-center gap-3 rounded-xl border border-black/10 bg-white/70 px-4 py-3 transition focus-within:border-amber-700">
+                      <FiUser className="text-zinc-400" />
+                      <input
+                        type="text"
+                        placeholder="Your name"
+                        value={authFields.name}
+                        onChange={(event) => updateAuthField("name", event.target.value)}
+                        className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-400"
+                      />
+                    </span>
+                    {authErrors.name && (
+                      <span className="mt-2 block text-xs font-medium text-red-600">
+                        {authErrors.name}
+                      </span>
+                    )}
+                  </label>
+                </div>
+
 
               <label className="block">
                 <span className="mb-2 block text-xs font-semibold uppercase tracking-widest text-zinc-500">
@@ -309,6 +323,26 @@ export default function Auth({ onClose }) {
               >
                 {isLogin ? "Log in" : "Create account"}
               </button>
+
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-black/10"></div>
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-[#f6efe4] px-2 text-zinc-500 font-medium">Or continue with</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                className="flex w-full items-center justify-center gap-3 rounded-full border border-black/10 bg-white/70 px-5 py-3 text-sm font-semibold text-zinc-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+              >
+                <FcGoogle className="text-xl" />
+                Google
+              </button>
+
+
               {authSuccess && (
                 <p className="text-center text-xs font-semibold text-amber-700">
                   {authSuccess}
